@@ -1,6 +1,12 @@
 services:
-  #frontend:
-  # TODO
+  frontend:
+    build: ../minix_frontend
+    container_name: minix_frontend
+    depends_on:
+      backend:
+        condition: service_started
+    ports:
+      - "3000:80"
   backend:
     build: ../minix_backend
     container_name: minix_backend
